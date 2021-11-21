@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Scrollspy from 'react-scrollspy'
 
 const LINKS = [
     'home',
     'about',
     'service',
     'experience',
+    'education',
     'portfolio',
     'price',
     'blog',
@@ -25,17 +25,18 @@ export function Navbar() {
     }, [])
 
     return (
-        <div className={'navbar navbar-expand-lg bg-light navbar-light ' + (scroll > 0 ? 'navbar-sticky' : '')}>
+        <div className={'navbar navbar-expand-lg bg-light navbar-light ' + (scroll > 0 ? 'nav-sticky' : '')}>
             <div className="container-fluid">
-                <a href="/" className="navbar-brand">DevFolio</a>
+                <a href="/" className="navbar-brand">
+                    The Dev Economist
+                </a>
 
                 <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div className="navbar-nav ml-auto d-inline-flex">
-                        <Scrollspy items={LINKS} currentClass='active'>
-                            {LINKS.map(link => {
-                                return <li style={{ listStyleType: 'none' }}><a href={'#' + link} className="nav-item nav-link">{link}</a></li>;
-                            })}
-                        </Scrollspy>
+                        {LINKS.map((link, key) => {
+                            const label = link[0].toUpperCase() + link.slice(1)
+                            return <a key={key} href={'#' + link} className="nav-item nav-link">{label}</a>;
+                        })}
                     </div>
                 </div>
             </div>

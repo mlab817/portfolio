@@ -10,7 +10,7 @@ export class About extends React.Component {
                     <div className="row align-items-center">
                         <div className="col-lg-6">
                             <div className="about-img">
-                                <img src={about} alt="Image" />
+                                <img src={about} style={{ maxHeight: 100 + 'vh' }} />
                             </div>
                         </div>
                         <div className="col-lg-6">

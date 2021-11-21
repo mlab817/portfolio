@@ -7,6 +7,27 @@ const style = {
 }
 
 export class Contact extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            newMessage: {
+                name: '',
+                email: '',
+                subject: '',
+                message: ''
+            }
+        }
+        this.handleInput = this.handleInput.bind(this);
+    }
+
+    handleInput(e) {
+        const { name, value } = e.target;
+        this.setState({
+            [name]: value,
+            ...this.state.newMessage
+        })
+    }
+
     render() {
         return (
             <div className="contact wow fadeInUp" data-wow-delay="0.1s" id="contact"
@@ -32,15 +53,24 @@ export class Contact extends React.Component {
                                                 <p className="help-block"></p>
                                         </div>
                                         <div className="control-group">
-                                            <input type="text" className="form-control" id="subject"
-                                                   placeholder="Subject" required="required"
-                                                   data-validation-required-message="Please enter a subject" />
+                                            <input
+                                                value={this.state.subject}
+                                                onChange={this.handleInput}
+                                                type="text"
+                                                className="form-control"
+                                                id="subject"
+                                                placeholder="Subject"
+                                                required="required"
+                                                data-validation-required-message="Please enter a subject" />
                                                 <p className="help-block"></p>
                                         </div>
                                         <div className="control-group">
-                                            <textarea className="form-control" id="message" placeholder="Message"
-                                                      required="required"
-                                                      data-validation-required-message="Please enter your message"></textarea>
+                                            <textarea
+                                                className="form-control"
+                                                id="message"
+                                                placeholder="Message"
+                                                required="required"
+                                                data-validation-required-message="Please enter your message"></textarea>
                                             <p className="help-block"></p>
                                         </div>
                                         <div>
