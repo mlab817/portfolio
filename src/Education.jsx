@@ -47,7 +47,7 @@ export function Education() {
                                 <div className="col-lg-6 fadeInUp" key={key}>
                                     <div className="service-item">
                                         <div className="service-icon">
-                                            <i className="fa fa-laptop"></i>
+                                            <i className="fas fa-graduation-cap"></i>
                                         </div>
                                         <div className="service-text">
                                             <h3>{educ.level}</h3>

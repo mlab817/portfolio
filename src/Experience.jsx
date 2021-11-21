@@ -39,35 +39,33 @@ const EXPERIENCES = [
     }
 ];
 
-export class Experience extends React.Component {
-    render() {
-        return (
-            <div className="experience" id="experience">
-                <div className="container">
-                    <header className="section-header text-center wow zoomIn" data-wow-delay="0.1s"
-                            style={{ visibility: 'visible', animationDelay: 0.1 + 's', animationName: 'zoomIn'}}>
-                        <p>My Resume</p>
-                        <h2>Working Experience</h2>
-                    </header>
-                    <div className="timeline">
-                        {
-                            EXPERIENCES.map((exp, index) => {
-                                return (
-                                    <div key={index} className={ 'timeline-item wow slideInLeft ' + (index % 2 > 0 ? 'right' : 'left') } data-wow-delay="0.1s"
-                                         style={{ visibility: 'visible', animationDelay: 0.1 + 's', animationName: 'slideInLeft'}}>
-                                        <div className="timeline-text">
-                                            <div className="timeline-date">{exp.period}</div>
-                                            <h2>{exp.jobTitle}</h2>
-                                            <h4>{exp.agency}</h4>
-                                            <p>{exp.description}</p>
-                                        </div>
+export function Experience() {
+    return (
+        <div className="experience" id="experience">
+            <div className="container">
+                <header className="section-header text-center wow zoomIn" data-wow-delay="0.1s"
+                        style={{ visibility: 'visible', animationDelay: 0.1 + 's', animationName: 'zoomIn'}}>
+                    <p>My Resume</p>
+                    <h2>Working Experience</h2>
+                </header>
+                <div className="timeline">
+                    {
+                        EXPERIENCES.map((exp, index) => {
+                            return (
+                                <div key={index} className={ 'timeline-item wow slideInLeft ' + (index % 2 > 0 ? 'right' : 'left') } data-wow-delay="0.1s"
+                                     style={{ visibility: 'visible', animationDelay: 0.1 + 's', animationName: 'slideInLeft'}}>
+                                    <div className="timeline-text">
+                                        <div className="timeline-date">{exp.period}</div>
+                                        <h2>{exp.jobTitle}</h2>
+                                        <h4>{exp.agency}</h4>
+                                        <p>{exp.description}</p>
                                     </div>
-                                );
-                            })
-                        }
-                    </div>
+                                </div>
+                            );
+                        })
+                    }
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 }

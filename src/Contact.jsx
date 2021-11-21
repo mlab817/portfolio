@@ -10,21 +10,30 @@ export class Contact extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            newMessage: {
-                name: '',
-                email: '',
-                subject: '',
-                message: ''
-            }
+            name: '',
+            email: '',
+            subject: '',
+            message: ''
         }
         this.handleInput = this.handleInput.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleInput(e) {
         const { name, value } = e.target;
         this.setState({
-            [name]: value,
-            ...this.state.newMessage
+            [name]: value
+        })
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        alert(JSON.stringify(this.state));
+        this.setState({
+            name: '',
+            email: '',
+            subject: '',
+            message: ''
         })
     }
 
@@ -39,38 +48,45 @@ export class Contact extends React.Component {
                             <div className="col-md-8">
                                 <div className="contact-form">
                                     <div id="success"></div>
-                                    <form name="sentMessage" id="contactForm" noValidate="novalidate">
+                                    <form onSubmit={this.handleSubmit} id="contactForm" noValidate="novalidate">
                                         <div className="control-group">
-                                            <input type="text" className="form-control" id="name"
-                                                   placeholder="Your Name" required="required"
-                                                   data-validation-required-message="Please enter your name" />
+                                            <input value={this.state.name} type="text" className="form-control" id="name"
+                                                   onChange={this.handleInput}
+                                                   placeholder="Your Name"
+                                                   name="name"
+                                                   required="required"/>
                                                 <p className="help-block"></p>
                                         </div>
                                         <div className="control-group">
-                                            <input type="email" className="form-control" id="email"
-                                                   placeholder="Your Email" required="required"
-                                                   data-validation-required-message="Please enter your email" />
+                                            <input value={this.state.email}
+                                                   onChange={this.handleInput}
+                                                   name="email"
+                                                   type="email"
+                                                   className="form-control"
+                                                   placeholder="Your Email"
+                                                   required="required" />
                                                 <p className="help-block"></p>
                                         </div>
                                         <div className="control-group">
                                             <input
                                                 value={this.state.subject}
                                                 onChange={this.handleInput}
+                                                name="subject"
                                                 type="text"
                                                 className="form-control"
-                                                id="subject"
                                                 placeholder="Subject"
-                                                required="required"
-                                                data-validation-required-message="Please enter a subject" />
+                                                required="required" />
                                                 <p className="help-block"></p>
                                         </div>
                                         <div className="control-group">
                                             <textarea
+                                                style={{ resize: 'none' }}
+                                                value={this.state.message}
+                                                onChange={this.handleInput}
+                                                name="message"
                                                 className="form-control"
-                                                id="message"
                                                 placeholder="Message"
-                                                required="required"
-                                                data-validation-required-message="Please enter your message"></textarea>
+                                                required="required"></textarea>
                                             <p className="help-block"></p>
                                         </div>
                                         <div>

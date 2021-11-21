@@ -7,7 +7,6 @@ const LINKS = [
     'experience',
     'education',
     'portfolio',
-    'price',
     'blog',
     'contact'
 ];
